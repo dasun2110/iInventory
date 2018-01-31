@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ithub.iinventory.StartActivity"
+    android:background="@drawable/newbg"
+    >
+
+    <Button
+        android:id="@+id/regButton"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/newAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="@color/colorAccent"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:text="Create Account"
+        android:textColor="@android:color/background_light"
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:id="@+id/newAccount"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="83dp"
+        android:backgroundTint="@android:color/background_light"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:text="Log In"
+        android:textColor="@color/colorPrimaryDark" />
+</RelativeLayout>
