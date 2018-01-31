@@ -74,7 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
         mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
 
-        final String userID =mAuth.getCurrentUser().getUid();
+
+        //Error on this code - NullPointException on installing and get user id
+
+      /*  final String userID =mAuth.getCurrentUser().getUid();
         usersReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
 
         usersReference.addValueEventListener(new ValueEventListener() {
@@ -88,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        }); */
+
+
 
         mAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
