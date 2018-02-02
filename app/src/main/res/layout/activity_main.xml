@@ -36,7 +36,8 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="Add Item"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/buttonshape"/>
 
     <Button
         android:id="@+id/mainMakeBill"
@@ -49,7 +50,8 @@
         android:backgroundTint="@color/colorAccent"
         android:text="Make Bill"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/buttonshape"/>
 
     <Button
         android:id="@+id/mainAllItem"
@@ -62,7 +64,8 @@
         android:backgroundTint="@android:color/holo_orange_light"
         android:text="All Item List"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/buttonshape"/>
 
 
     <Button
@@ -76,7 +79,8 @@
         android:backgroundTint="#9d9d9d"
         android:text="Chat"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:background="@drawable/buttonshape"/>
 
     <TextView
         android:id="@+id/dateView"

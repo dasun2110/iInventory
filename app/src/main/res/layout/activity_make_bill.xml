@@ -53,7 +53,9 @@
         android:text="Add Item"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qty" />
+        app:layout_constraintTop_toBottomOf="@+id/qty"
+        android:background="@drawable/buttonshape"
+       />
 
     <Button
         android:id="@+id/button4"
@@ -65,7 +67,8 @@
         android:text="continue"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemID" />
+        app:layout_constraintTop_toBottomOf="@+id/itemID"
+        android:background="@drawable/buttonshape"/>
 
     <TextView
         android:id="@+id/textView4"

@@ -15,12 +15,14 @@
         android:layout_above="@+id/newAccount"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="52dp"
+        android:background="@drawable/buttonshape"
         android:backgroundTint="@color/colorAccent"
         android:paddingLeft="100dp"
         android:paddingRight="100dp"
         android:text="Create Account"
         android:textColor="@android:color/background_light"
-        android:textColorHighlight="@color/common_google_signin_btn_text_dark_default" />
+        android:textColorHighlight="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/newAccount"
@@ -29,9 +31,11 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="83dp"
+        android:background="@drawable/buttonshape"
         android:backgroundTint="@android:color/background_light"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
         android:text="Log In"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
 </RelativeLayout>

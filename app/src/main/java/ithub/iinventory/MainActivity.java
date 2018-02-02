@@ -72,12 +72,13 @@ public class MainActivity extends AppCompatActivity {
         mChatBtn = (Button)findViewById(R.id.chatButton);
         mUserName = (TextView)findViewById(R.id.loggedUser);
 
-        mCurrentUser= FirebaseAuth.getInstance().getCurrentUser();
+        mCurrentUser= mAuth.getCurrentUser();
 
 
         //Error on this code - NullPointException on installing and get user id
 
-      /*  final String userID =mAuth.getCurrentUser().getUid();
+/*         final String userID =mCurrentUser.getUid();
+
         usersReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
 
         usersReference.addValueEventListener(new ValueEventListener() {
@@ -91,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        }); */
-
+        });
+*/
 
 
         mAddItem.setOnClickListener(new View.OnClickListener() {

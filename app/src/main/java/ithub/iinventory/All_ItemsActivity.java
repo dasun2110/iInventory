@@ -5,6 +5,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class All_ItemsActivity extends AppCompatActivity {
@@ -14,10 +21,19 @@ public class All_ItemsActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    private FirebaseAuth mAuth;
+    private DatabaseReference mRef;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference usersReference;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all__items);
+
+        mAuth = FirebaseAuth.getInstance();
 
         nToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.reg_toolbar);
         setSupportActionBar(nToolBar);
@@ -27,7 +43,9 @@ public class All_ItemsActivity extends AppCompatActivity {
 
 
 
-        ArrayList<ExmapleItem> exampleItem  = new ArrayList<>();
+
+
+       ArrayList<ExmapleItem> exampleItem  = new ArrayList<>();
         exampleItem.add(new ExmapleItem("Marvo Keyboard","LKR 2500/="));
         exampleItem.add(new ExmapleItem("Marvo Mouse","LKR 1500/="));
         exampleItem.add(new ExmapleItem("Samsung SSD EVO 250GB","LKR 25000/="));
