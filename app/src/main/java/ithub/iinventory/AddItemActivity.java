@@ -46,7 +46,7 @@ public class AddItemActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Items").child(mAuth.getCurrentUser().getUid()).push();
+       // mDatabase = FirebaseDatabase.getInstance().getReference().child("Items").child(mAuth.getCurrentUser().getUid()).push();
 
 
         nToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.reg_toolbar);
@@ -65,10 +65,14 @@ public class AddItemActivity extends AppCompatActivity {
         mAddItemToDb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String itemID = mItemID.getText().toString();
                 String itemName = mItemName.getText().toString();
                 String itemQty = mItemQty.getText().toString();
                 String itemPrice = mItemPrice.getText().toString();
+
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Items").child(itemID);
+
 
                 if(!TextUtils.isEmpty(itemID) || TextUtils.isEmpty(itemName) ||
                         TextUtils.isEmpty(itemQty) || TextUtils.isEmpty(itemPrice)){
@@ -102,10 +106,10 @@ public class AddItemActivity extends AppCompatActivity {
 
 
         final Map noteMap = new HashMap();
-        noteMap.put("itemID", newitemid);
-        noteMap.put("itemName", newitemname);
-        noteMap.put("ietmQty",newitemqty );
-        noteMap.put("itemPrice",newitemprice );
+        noteMap.put("iID", newitemid);
+        noteMap.put("iName", newitemname);
+        noteMap.put("iPrice",newitemprice );
+        noteMap.put("iQ",newitemqty );
 
         Thread mainThread = new Thread(new Runnable() {
             @Override

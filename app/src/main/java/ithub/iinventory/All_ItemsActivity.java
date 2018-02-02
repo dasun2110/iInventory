@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +29,9 @@ public class All_ItemsActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference usersReference;
 
+    private ImageButton mSearchButton;
+    private EditText mSearchItemID;
+
 
 
     @Override
@@ -41,11 +47,49 @@ public class All_ItemsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("All Items");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mSearchButton = (ImageButton)findViewById(R.id.searchButton);
+        mSearchItemID = (EditText)findViewById(R.id.searchItemID);
+
+        final ArrayList<ExmapleItem> exampleItem = new ArrayList<>();
+
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String itemID = mSearchItemID.getText().toString();
+                usersReference = FirebaseDatabase.getInstance().getReference().child("Items").child(itemID);
+
+                usersReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        String itemName = dataSnapshot.child("iName").getValue().toString();
+                        String itemPrice = dataSnapshot.child("iPrice").getValue().toString();
+
+                        exampleItem.add(new ExmapleItem(itemName, itemPrice));
+                        mRecyclerView = findViewById(R.id.itemListView);
+                        mRecyclerView.setHasFixedSize(true);
+                        mLayoutManager = new LinearLayoutManager(All_ItemsActivity.this);
+                        mAdapter = new ExampleAdapter(exampleItem);
+
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+        });
 
 
 
 
-       ArrayList<ExmapleItem> exampleItem  = new ArrayList<>();
+
+
+     /*  ArrayList<ExmapleItem> exampleItem  = new ArrayList<>();
         exampleItem.add(new ExmapleItem("Marvo Keyboard","LKR 2500/="));
         exampleItem.add(new ExmapleItem("Marvo Mouse","LKR 1500/="));
         exampleItem.add(new ExmapleItem("Samsung SSD EVO 250GB","LKR 25000/="));
@@ -66,7 +110,7 @@ public class All_ItemsActivity extends AppCompatActivity {
         mAdapter = new ExampleAdapter(exampleItem);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);*/
 
 
 

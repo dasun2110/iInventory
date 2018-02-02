@@ -23,7 +23,7 @@ public class MakeBillActivity extends AppCompatActivity {
 
     private android.support.v7.widget.Toolbar nToolBar;
 
-    private TextView mItemID , mQty ;
+    private EditText mItemID , mQty ;
     private FirebaseAuth mAuth;
 
     private DatabaseReference mRef;
@@ -56,38 +56,43 @@ public class MakeBillActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
        // mRef = mFirebaseDatabase.getReference();
 
-        mItemID = (TextView)findViewById(R.id.itemID);
-        mQty = (TextView)findViewById(R.id.qty);
+        mItemID = (EditText)findViewById(R.id.itemID);
+        mQty = (EditText)findViewById(R.id.qty);
         mAddToBill = (Button)findViewById(R.id.addToBillBtn);
 
-        String newItemIdByUser = mItemID.getText().toString().trim();
 
-
-        usersReference = FirebaseDatabase.getInstance().getReference().child("SahanTestItems").child("0003");
-
-
-
+       // String testUserInput = mItemID.getText().toString();
+       // String xx = "0003";
+       // usersReference = FirebaseDatabase.getInstance().getReference().child("SahanTestItems").child(xx);
 
         final ArrayList<ExmapleItem> exampleItem = new ArrayList<>();
 
 
         mAddToBill.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
+
+
+                String testUserInput = mItemID.getText().toString();
+                usersReference = FirebaseDatabase.getInstance().getReference().child("Items").child(testUserInput);
+
                 usersReference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-                                String itemName = dataSnapshot.child("iName").getValue().toString();
-                                String itemPrice = dataSnapshot.child("iPrice").getValue().toString();
+                            String itemName = dataSnapshot.child("iName").getValue().toString();
+                            String itemPrice = dataSnapshot.child("iPrice").getValue().toString();
 
+                            exampleItem.add(new ExmapleItem(itemName, itemPrice));
+                            mRecyclerView = findViewById(R.id.itemListView);
+                            mRecyclerView.setHasFixedSize(true);
+                            mLayoutManager = new LinearLayoutManager(MakeBillActivity.this);
+                            mAdapter = new ExampleAdapter(exampleItem);
 
-
-
-                                exampleItem.add(new ExmapleItem(itemName, itemPrice));
-                                // exampleItem.add(new ExmapleItem(getItems.getItemID(),getItems.getItemPrice()));
-
-
+                            mRecyclerView.setLayoutManager(mLayoutManager);
+                            mRecyclerView.setAdapter(mAdapter);
 
 
                         }
@@ -98,13 +103,6 @@ public class MakeBillActivity extends AppCompatActivity {
                         }
                     });
 
-                mRecyclerView = findViewById(R.id.itemListView);
-                mRecyclerView.setHasFixedSize(true);
-                mLayoutManager = new LinearLayoutManager(MakeBillActivity.this);
-                mAdapter = new ExampleAdapter(exampleItem);
-
-                mRecyclerView.setLayoutManager(mLayoutManager);
-                mRecyclerView.setAdapter(mAdapter);
 
 
             }
