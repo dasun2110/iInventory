@@ -3,6 +3,7 @@ package ithub.iinventory;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView mUserName;
 
     private FirebaseUser mCurrentUser;
+
+    private CardView mCardview1;
+    private CardView mCardView2;
 
     @Override
     public void onStart() {
@@ -71,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         mAllItems = (Button)findViewById(R.id.mainAllItem);
         mChatBtn = (Button)findViewById(R.id.chatButton);
         mUserName = (TextView)findViewById(R.id.loggedUser);
+        mCardview1 = (CardView)findViewById(R.id.cardView);
+        mCardView2 = (CardView)findViewById(R.id.cardView2);
 
         mCurrentUser= mAuth.getCurrentUser();
 
@@ -126,6 +132,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent allItemIntent = new Intent(MainActivity.this,All_ItemsActivity.class);
                 startActivity(allItemIntent);
+            }
+        });
+
+        mCardview1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newIN = new Intent(MainActivity.this,LastSaleActivity.class);
+                startActivity(newIN);
+            }
+        });
+
+        mCardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent allSales = new Intent(MainActivity.this,AllSalesActivity.class);
+                startActivity(allSales);
             }
         });
 
