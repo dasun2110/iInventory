@@ -4,9 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@android:color/background_light"
     tools:context="ithub.iinventory.MainActivity">
 
-    <include layout="@layout/app_bar_layout" android:id="@+id/main_page_toolbar"/>
+    <include
+        android:id="@+id/main_page_toolbar"
+        layout="@layout/app_bar_layout" />
 
     <Button
         android:id="@+id/mainAddItem"
@@ -32,11 +35,11 @@
         android:layout_alignStart="@+id/mainAddItem"
         android:layout_below="@+id/mainAddItem"
         android:layout_marginTop="72dp"
+        android:background="@drawable/buttonshape"
         android:backgroundTint="@color/colorAccent"
         android:text="Make Bill"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:textSize="18sp"
-        android:background="@drawable/buttonshape"/>
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/mainAllItem"
@@ -45,9 +48,9 @@
         android:layout_alignLeft="@+id/mainMakeBill"
         android:layout_alignStart="@+id/mainMakeBill"
         android:layout_below="@+id/mainMakeBill"
-        android:layout_marginTop="91dp"
+        android:layout_marginTop="84dp"
         android:background="@drawable/buttonshape"
-        android:backgroundTint="@android:color/holo_orange_light"
+        android:backgroundTint="#f2ac1d"
         android:text="All Item List"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="18sp" />
@@ -257,10 +260,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cardView2"
-        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/cardView2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
         android:fontFamily="@font/amita_bold"
         android:text="i"
         android:textColor="@android:color/holo_purple"
