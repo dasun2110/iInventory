@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ithub.iinventory.StartActivity"
-    android:background="@drawable/newbg"
+    android:background="@color/colorPrimaryDark"
     >
 
     <Button
@@ -38,4 +38,41 @@
         android:text="Log In"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_alignEnd="@+id/newAccount"
+        android:layout_alignRight="@+id/newAccount"
+        android:layout_marginEnd="13dp"
+        android:layout_marginRight="13dp"
+        app:srcCompat="@drawable/ic_mainbg" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView2"
+        android:layout_alignStart="@+id/imageView2"
+        android:layout_centerVertical="true"
+        android:backgroundTint="@color/cardview_light_background"
+        android:fontFamily="@font/amita_bold"
+        android:text="i"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="90sp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignEnd="@+id/imageView2"
+        android:layout_alignRight="@+id/imageView2"
+        android:fontFamily="@font/advent_pro"
+        android:text="Inventory"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="60sp" />
 </RelativeLayout>

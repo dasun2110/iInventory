@@ -97,9 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                     mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uID);
                     HashMap<String , String> userMap = new HashMap<>();
                     userMap.put("name",displayName);
-                    userMap.put("status","Hello.. User");
-                    userMap.put("image","default");
-                    userMap.put("thumb_image","default");
+                  //  userMap.put("status","Hello.. User");
+                   // userMap.put("image","default");
+                 //   userMap.put("thumb_image","default");
 
                     mDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

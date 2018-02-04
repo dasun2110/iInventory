@@ -39,6 +39,18 @@
             android:layout_marginRight="21dp"
             android:background="@drawable/ic_remove_circle_black_24dp" />
 
+        <TextView
+            android:id="@+id/LKRview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/itemPrice"
+            android:layout_toRightOf="@+id/itemPrice"
+            android:text="LKR"
+            android:textSize="15sp" />
+
 
     </RelativeLayout>
 
