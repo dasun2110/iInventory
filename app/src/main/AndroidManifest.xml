@@ -28,7 +28,8 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MakeBillActivity"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".ChatActivity"
             android:parentActivityName=".MainActivity" />
@@ -43,8 +44,10 @@
         <activity
             android:name=".LastSaleActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".AllSalesActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".AllSalesActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".CustomLayout"></activity>
     </application>
 
 </manifest>

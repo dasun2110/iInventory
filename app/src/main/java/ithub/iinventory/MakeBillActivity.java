@@ -1,51 +1,74 @@
 package ithub.iinventory;
 
+import android.content.Context;
+import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class MakeBillActivity extends AppCompatActivity {
 
     private android.support.v7.widget.Toolbar nToolBar;
 
-    private EditText mItemID , mQty ;
+    private TextView mItemID , mQty, mItemName, mItemPrice, mTotalPrice;
     private FirebaseAuth mAuth;
 
+
     private DatabaseReference mRef;
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference usersReference;
 
     private Button mAddToBill;
+    private Button mContinue;
+
+    private  EditText mCash;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    //    public LayoutInflater inflater = getLayoutInflater();
+    DatabaseReference rootRef, itemRef;
+
+    public LayoutInflater inflater;
+    public View v;
 
     private Button mRemoveItem;
 
+    // ViewGroup parent;
 
+    int sum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_bill);
 
+        //database reference pointing to root of database
+        rootRef = FirebaseDatabase.getInstance().getReference();
+
+        //database reference pointing to child node
+        itemRef = rootRef.child("Items");
 
         nToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.reg_toolbar);
         setSupportActionBar(nToolBar);
@@ -54,81 +77,108 @@ public class MakeBillActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();
-       // mRef = mFirebaseDatabase.getReference();
 
-        mItemID = (EditText)findViewById(R.id.itemID);
-        mQty = (EditText)findViewById(R.id.qty);
+        final List list = new ArrayList();
+
+
+        mItemID = (TextView)findViewById(R.id.itemID);
+        mQty = (TextView)findViewById(R.id.qty);
         mAddToBill = (Button)findViewById(R.id.addToBillBtn);
+        mTotalPrice = (TextView)findViewById(R.id.totalPriceView);
+        mRemoveItem = (Button) findViewById(R.id.removeItem);
+        mItemName = (TextView) findViewById(R.id.itemName);
+        mItemPrice = (TextView) findViewById(R.id.itemPrice);
+        mContinue = (Button) findViewById(R.id.contBtn);
+        mCash = (EditText) findViewById(R.id.cashEdit);
+        //////////////////****************/////////
+        // here child node of items taken and called according to their model number
+        // modelRef = itemRef.child(mItemID.getText().toString());
 
+        ///////////********************////////////
 
-       // String testUserInput = mItemID.getText().toString();
-       // String xx = "0003";
-       // usersReference = FirebaseDatabase.getInstance().getReference().child("SahanTestItems").child(xx);
-
-        final ArrayList<ExmapleItem> exampleItem = new ArrayList<>();
-
+        final ArrayList<ExmapleItem> exampleItem  = new ArrayList<>();
 
         mAddToBill.setOnClickListener(new View.OnClickListener() {
-
+            /// to equalize to model number use toEqual() and thereafter to go through all the data to take item name and item price go through all the databses
+            //// use two for loops to take item name and item price values
+            ///// see the database image send by akila to do above things (some info are book marked)
 
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
+                // here according to above case no need of equalTo() value
 
-                String testUserInput = mItemID.getText().toString();
-                usersReference = FirebaseDatabase.getInstance().getReference().child("Items").child(testUserInput);
+                itemRef.child(mItemID.getText().toString()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
 
-                usersReference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
+                        Map<String, String> map = (Map)dataSnapshot.getValue();
 
-                            String itemName = dataSnapshot.child("iName").getValue().toString();
-                            String itemPrice = dataSnapshot.child("iPrice").getValue().toString();
+                        String itemName = map.get("iName");
+                        String itemPrice = map.get("iPrice");
+                        //    boolean  itemPrice =  map.get("iPrice").isEmpty();
 
-                            exampleItem.add(new ExmapleItem(itemName, itemPrice));
-                            mRecyclerView = findViewById(R.id.itemListView);
-                            mRecyclerView.setHasFixedSize(true);
-                            mLayoutManager = new LinearLayoutManager(MakeBillActivity.this);
-                            mAdapter = new ExampleAdapter(exampleItem);
+                        int oneItemPrice = Integer.parseInt(itemPrice);
+                        int qty = Integer.parseInt(mQty.getText().toString());
 
-                            mRecyclerView.setLayoutManager(mLayoutManager);
-                            mRecyclerView.setAdapter(mAdapter);
+                        String totalPrice = Integer.toString(oneItemPrice * qty);
+                        //String totalPrice = map.get("iPrice");
 
+                        exampleItem.add(new ExmapleItem(itemName, totalPrice));
 
-                        }
+                        sum += Integer.parseInt(totalPrice);
+                        mTotalPrice.setText(sum+"");
+                    }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-
-
-
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Getting Post failed, log a message
+                        // Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                        // ...
+                    }
+                });
             }
-
         });
 
 
+        mContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!mCash.getText().toString().isEmpty()) {
+                    int cash = (Integer.parseInt(mCash.getText().toString().trim()) - Integer.parseInt(mTotalPrice.getText().toString().trim()));
 
-       /* final ArrayList<ExmapleItem> exampleItem  = new ArrayList<>();
-        exampleItem.add(new ExmapleItem("Marvo Keyboard","LKR 2500/="));
-        exampleItem.add(new ExmapleItem("Marvo Mouse","LKR 1500/="));
-        exampleItem.add(new ExmapleItem("Samsung SSD EVO 250GB","LKR 25000/="));
-        exampleItem.add(new ExmapleItem("Samsung Monitor 24","LKR 35000/="));
-        exampleItem.add(new ExmapleItem("Gaming Pad","LKR 250/="));
-        exampleItem.add(new ExmapleItem("Gaming Headset Marvo","LKR 35000/="));
-        exampleItem.add(new ExmapleItem("Huawei Power Bank 10000mAH","LKR 5000/="));
-        exampleItem.add(new ExmapleItem("AC Power Adapter","LKR 25000/="));
-        exampleItem.add(new ExmapleItem("Apple Magic Mouse","LKR 11000/="));
-        exampleItem.add(new ExmapleItem("HyperX 8GB Memory","LKR 10000/="));
-        exampleItem.add(new ExmapleItem("Toshiba 1TB Portable","LKR 11000/="));
-        exampleItem.add(new ExmapleItem("Gaming Bag Pack","LKR 5500/=")); */
+                    Intent intent = new Intent(MakeBillActivity.this, CustomLayout.class);
+                    Bundle extras = new Bundle();
+                    extras.putString("EXTRA_TOTAL", mTotalPrice.getText().toString());
+                    extras.putString("EXTRA_CASH", mCash.getText().toString());
+                    extras.putString("EXTRA_BALANCE", Integer.toString(cash));
+                    intent.putExtras(extras);
+                    startActivity(intent);
+                    //finish();
+                }
+
+                else {
+                    Toast.makeText(MakeBillActivity.this,"You must enter the Cash value before continue",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mRecyclerView = findViewById(R.id.itemListView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new ExampleAdapter(exampleItem);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+
+    }
+
+    public int getSum(){
+        return sum;
+    }
 
 
-
-
-
-
+    public void setSum(int sum){
+        this.sum = sum;
     }
 }
