@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -45,6 +46,7 @@ public class CustomLayout extends AppCompatActivity {
         setContentView(R.layout.activity_custom_layout);
 
         mAuth = FirebaseAuth.getInstance();
+        //mDatabase = FirebaseDatabase.getInstance().getReference().child("Bills").child(mAuth.getCurrentUser().getUid()).push();
 
         nToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.reg_toolbar);
         setSupportActionBar(nToolBar);
@@ -70,9 +72,9 @@ public class CustomLayout extends AppCompatActivity {
         final String cashString = extras.getString("EXTRA_CASH");
         String balanceString = extras.getString("EXTRA_BALANCE");
 
-        totalValue.setText("LKR " + totalString + "/=");
-        cashValue.setText("LKR " + cashString + "/=");
-        balanceValue.setText("LKR " + balanceString + "/=");
+        totalValue.setText("LKR " + totalString );
+        cashValue.setText("LKR " + cashString );
+        balanceValue.setText("LKR " + balanceString );
 
        // final String time = ServerValue.TIMESTAMP.toString();
 
@@ -83,8 +85,9 @@ public class CustomLayout extends AppCompatActivity {
                 String billTotal = totalValue.getText().toString();
                 String billCash = cashValue.getText().toString();
                 String billBalance = balanceValue.getText().toString();
+                String time = ServerValue.TIMESTAMP.toString();
 
-                mDatabase = FirebaseDatabase.getInstance().getReference().child("Bills").child(mAuth.getCurrentUser().getUid());
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("Bills").child(mAuth.getCurrentUser().getUid()).child(billTotal);
               /*  mRegProg.setTitle("Save Bill");
                 mRegProg.setMessage("Please wait while save bill details");
                 mRegProg.setCanceledOnTouchOutside(false);

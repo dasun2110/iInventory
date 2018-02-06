@@ -98,25 +98,7 @@ public class MainActivity extends AppCompatActivity {
         mCurrentUser= mAuth.getCurrentUser();
 
 
-        //Error on this code - NullPointException on installing and get user id
 
-/*         final String userID =mCurrentUser.getUid();
-
-        usersReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
-
-        usersReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String loggedUserName = dataSnapshot.child("name").getValue().toString();
-                mUserName.setText(loggedUserName);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-*/
 
 
         mAddItem.setOnClickListener(new View.OnClickListener() {
