@@ -134,6 +134,16 @@ public class MakeBillActivity extends AppCompatActivity {
 
                         sum += Integer.parseInt(totalPrice);
                         mTotalPrice.setText(sum+"");
+
+                        mRecyclerView = findViewById(R.id.itemListView);
+                        mRecyclerView.setHasFixedSize(true);
+                        mLayoutManager = new LinearLayoutManager(MakeBillActivity.this);
+                        mAdapter = new ExampleAdapter(exampleItem);
+
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+                        mRecyclerView.setAdapter(mAdapter);
+
+
                     }
 
                     @Override
@@ -142,7 +152,10 @@ public class MakeBillActivity extends AppCompatActivity {
                         // Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
                         // ...
                     }
+
+
                 });
+
             }
         });
 
@@ -189,13 +202,13 @@ public class MakeBillActivity extends AppCompatActivity {
 });
 
 */
-        mRecyclerView = findViewById(R.id.itemListView);
+     /*   mRecyclerView = findViewById(R.id.itemListView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mAdapter = new ExampleAdapter(exampleItem);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);*/
 
 
 

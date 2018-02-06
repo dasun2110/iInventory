@@ -253,7 +253,7 @@
         android:layout_marginBottom="12dp"
         android:layout_marginEnd="33dp"
         android:layout_marginRight="33dp"
-        app:srcCompat="@drawable/iinventory_logo" />
+        app:srcCompat="@drawable/logomain" />
 
     <TextView
         android:id="@+id/textView"

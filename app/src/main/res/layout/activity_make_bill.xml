@@ -26,7 +26,7 @@
         android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="Item ID"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Qty"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemID" />
 
@@ -50,13 +50,13 @@
         android:layout_height="47dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/buttonshape"
         android:backgroundTint="@color/colorAccent"
         android:text="Add Item"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qty"
-        android:background="@drawable/buttonshape"
-       />
+        app:layout_constraintTop_toBottomOf="@+id/qty" />
 
     <Button
         android:id="@+id/contBtn"
@@ -64,12 +64,13 @@
         android:layout_height="54dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="596dp"
+        android:background="@drawable/buttonshape"
         android:backgroundTint="@color/colorPrimary"
         android:text="continue"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemID"
-        android:background="@drawable/buttonshape"/>
+        app:layout_constraintTop_toBottomOf="@+id/itemID" />
 
     <TextView
         android:id="@+id/textView4"
@@ -77,11 +78,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="148dp"
         android:text="Total"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.015"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemID" />
 
@@ -109,7 +110,7 @@
         android:text=""
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -119,42 +120,29 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:text="LKR"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/cashEdit" />
 
     <EditText
         android:id="@+id/cashEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:hint="Enter the cash amount here!"
+        android:layout_marginTop="16dp"
+        android:hint="Cash amount !"
         android:text=""
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="Cash"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalPriceView" />
+        app:layout_constraintTop_toBottomOf="@+id/lkrView"
+        android:inputType="number"/>
 
 
     <android.support.v7.widget.RecyclerView

@@ -22,14 +22,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="228dp"
+        android:background="@drawable/buttonshape"
         android:backgroundTint="@color/colorPrimary"
         android:text="Add  item"
         android:textColor="@android:color/background_light"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.725"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newItemQty"
-        android:background="@drawable/buttonshape"/>
+        app:layout_constraintTop_toBottomOf="@+id/newItemQty" />
 
     <EditText
         android:id="@+id/itemID"
@@ -70,7 +71,7 @@
         android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Quantity"
-        android:inputType="textEmailAddress"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +86,7 @@
         android:layout_marginTop="120dp"
         android:ems="10"
         android:hint="Price Per Unit - LKR"
-        android:inputType="textEmailAddress"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

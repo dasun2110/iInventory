@@ -48,6 +48,23 @@ public class MainActivity extends AppCompatActivity {
 
         if(currentUser==null){
             sendToStart();
+        }else{
+            final String userID =mCurrentUser.getUid();
+
+            usersReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+
+            usersReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String loggedUserName = dataSnapshot.child("name").getValue().toString();
+                    mUserName.setText(loggedUserName);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 

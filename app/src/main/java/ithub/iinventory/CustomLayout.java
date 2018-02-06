@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 public class CustomLayout extends AppCompatActivity {
 
     TextView totalValue;
@@ -15,10 +18,26 @@ public class CustomLayout extends AppCompatActivity {
     Button saveContBtn;
     Button cancelBtn;
 
+    private android.support.v7.widget.Toolbar nToolBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_layout);
+
+        nToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.reg_toolbar);
+        setSupportActionBar(nToolBar);
+
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
+
+        TextView dateView = (TextView)findViewById(R.id.dateView);
+        dateView.setText(currentDate);
+
+        getSupportActionBar().setTitle("Bill Summary");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         totalValue = (TextView) findViewById(R.id.totalValue);
         cashValue = (TextView) findViewById(R.id.cashValue);

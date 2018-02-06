@@ -49,9 +49,11 @@
         <activity
             android:name=".AllSalesActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".CustomLayout" />
+        <activity android:name=".CustomLayout"
+            android:parentActivityName=".MakeBillActivity"/>
         <activity android:name=".PrinterService"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask"
+            android:parentActivityName=".CustomLayout"/>
     </application>
 
 </manifest>

@@ -23,15 +23,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="96dp"
+        android:background="@drawable/buttonshape"
         android:backgroundTint="@color/colorAccent"
         android:text="Register Account"
         android:textColor="@android:color/background_light"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newItemQty"
-        android:background="@drawable/buttonshape"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/newItemQty" />
 
     <EditText
         android:id="@+id/itemID"

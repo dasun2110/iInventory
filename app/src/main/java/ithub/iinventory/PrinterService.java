@@ -51,10 +51,23 @@ public class PrinterService extends AppCompatActivity {
     int readBufferPosition;
     volatile boolean stopWorker;
 
+
+
+    private android.support.v7.widget.Toolbar nToolBar;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_printer_service);
+
+        nToolBar = (android.support.v7.widget.Toolbar) findViewById(R.id.reg_toolbar);
+        setSupportActionBar(nToolBar);
+
+
+        getSupportActionBar().setTitle("Print Bill");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         // we are going to have three buttons for specific functions
         connectButton = (Button) findViewById(R.id.connectBtn);
