@@ -38,7 +38,9 @@ public class CustomLayout extends AppCompatActivity {
         saveContBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(CustomLayout.this, PrinterService.class);
+                startActivity(intent);
+                finish();
             }
         });
 

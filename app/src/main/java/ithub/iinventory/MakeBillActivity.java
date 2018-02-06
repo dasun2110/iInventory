@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -47,6 +48,8 @@ public class MakeBillActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
+    private CardView mCardView;
+
     //    public LayoutInflater inflater = getLayoutInflater();
     DatabaseReference rootRef, itemRef;
 
@@ -55,8 +58,9 @@ public class MakeBillActivity extends AppCompatActivity {
 
     private Button mRemoveItem;
 
-    // ViewGroup parent;
 
+
+    // ViewGroup parent;
     int sum = 0;
 
     @Override
@@ -80,16 +84,18 @@ public class MakeBillActivity extends AppCompatActivity {
 
         final List list = new ArrayList();
 
-
         mItemID = (TextView)findViewById(R.id.itemID);
         mQty = (TextView)findViewById(R.id.qty);
         mAddToBill = (Button)findViewById(R.id.addToBillBtn);
         mTotalPrice = (TextView)findViewById(R.id.totalPriceView);
-        mRemoveItem = (Button) findViewById(R.id.removeItem);
+       // mRemoveItem = (Button) findViewById(R.id.removeItem);
         mItemName = (TextView) findViewById(R.id.itemName);
-        mItemPrice = (TextView) findViewById(R.id.itemPrice);
+       // mItemPrice = (TextView) findViewById(R.id.itemPrice);
         mContinue = (Button) findViewById(R.id.contBtn);
         mCash = (EditText) findViewById(R.id.cashEdit);
+        mCardView = findViewById(R.id.myCardView);
+     //   mRemoveItem = mCardView.findViewById(R.id.removeItem);
+  //      mItemPrice = mCardView.findViewById(R.id.itemPrice);
         //////////////////****************/////////
         // here child node of items taken and called according to their model number
         // modelRef = itemRef.child(mItemID.getText().toString());
@@ -163,6 +169,26 @@ public class MakeBillActivity extends AppCompatActivity {
             }
         });
 
+/*
+        mCardView.findViewById(R.id.removeItem).setOnClickListener(new View.OnClickListener() {
+
+    @Override
+    public void onClick(View v) {//  MakeBillActivity billObj = new MakeBillActivity();
+        // int sumValue = billObj.getSum();
+        // final ExmapleItem currentItem = mExampleList.get(position);
+
+        // String equipPrice = holder.mItemPrice.getText().toString();
+        // String equipPrice = currentItem.getItemPrice();
+        String equipPrice = mItemPrice.getText().toString();
+        sum -= Integer.parseInt(equipPrice);
+        //  billObj.setSum(sumValue);
+        //  innerView.setText("LKR"+ sumValue +"/=");
+        //  holder.mTotal.setText("LKR"+ sumValue +"/=");
+        //     mTotal.setText("LKR"+ sumValue +"/=");;
+    }
+});
+
+*/
         mRecyclerView = findViewById(R.id.itemListView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
@@ -170,6 +196,8 @@ public class MakeBillActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
+
 
     }
 
