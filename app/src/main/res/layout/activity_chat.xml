@@ -15,41 +15,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="600dp"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="1300dp"
         android:layout_height="57dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="812dp"
         android:background="@color/common_google_signin_btn_text_dark_default"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintStart_toStartOf="parent">
 
         <EditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/editText"
+            android:layout_width="1215dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="8"
             android:ems="10"
             android:hint="Type message"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="0dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
             android:background="@color/common_google_signin_btn_text_dark_default"
-            app:srcCompat="@drawable/ic_send_black_24dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editText"
+            app:srcCompat="@drawable/ic_send_black_24dp"
+            tools:layout_editor_absoluteY="0dp" />
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

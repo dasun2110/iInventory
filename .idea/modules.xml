@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Akila Devinda\Desktop\iInventory\app\app.iml" filepath="C:\Users\Akila Devinda\Desktop\iInventory\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/iInventory.iml" filepath="$PROJECT_DIR$/iInventory.iml" />
       <module fileurl="file://C:\Users\Akila Devinda\Desktop\iInventory\iInventoryMyNew.iml" filepath="C:\Users\Akila Devinda\Desktop\iInventory\iInventoryMyNew.iml" />
     </modules>
