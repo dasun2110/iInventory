@@ -33,7 +33,11 @@ public class MakeBillActivity extends AppCompatActivity {
 
     private android.support.v7.widget.Toolbar nToolBar;
 
-    private TextView mItemID , mQty, mItemName, mItemPrice, mTotalPrice;
+    private TextView mItemID , mQty, mItemName, mItemPrice;
+
+    //took this textView as a static value because nedded from recyclerView
+    private static TextView mTotalPrice;
+
     private FirebaseAuth mAuth;
 
 
@@ -61,7 +65,7 @@ public class MakeBillActivity extends AppCompatActivity {
 
 
     // ViewGroup parent;
-    int sum = 0;
+    static int sum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -214,6 +218,18 @@ public class MakeBillActivity extends AppCompatActivity {
 
     }
 
+    ///here this is used to update textView from RecyclerView class
+    public static  void updateCounter(String value){
+        try{
+            mTotalPrice.setText(value);
+        }
+
+        catch (Exception e){
+
+        }
+    }
+
+    ///used to set and get the sum value...
     public int getSum(){
         return sum;
     }

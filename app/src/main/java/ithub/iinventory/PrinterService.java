@@ -26,7 +26,7 @@ public class PrinterService extends AppCompatActivity {
     // will show the statuses like bluetooth open, close or data sent
     TextView statusLabel;
 
-    // will enable user to enter any text to be printed
+    // will enable user to enter model number of device
     EditText modelNumbEdit;
 
     // android built in classes for bluetooth operations
@@ -259,7 +259,7 @@ public class PrinterService extends AppCompatActivity {
             // getting date and time for the receipt
             String dateTime = DateFormat.getDateTimeInstance().format(calendar.getTime());
 
-            // the text typed by the user
+            // the text details for receipt
             String total = "TOTAL: " + totalTxt.getText().toString() + "\n";
             String cash = "CASH: " + cashTxt.getText().toString() + "\n\n";
             String balance = "BALANCE: " + balanceTxt.getText().toString() + "\n";

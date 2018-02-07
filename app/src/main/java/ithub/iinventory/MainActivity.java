@@ -113,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
         mMakeBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                MakeBillActivity billObj = new MakeBillActivity();
+                billObj.setSum(0);
                 Intent makeBill = new Intent(MainActivity.this,MakeBillActivity.class);
                 startActivity(makeBill);
             }

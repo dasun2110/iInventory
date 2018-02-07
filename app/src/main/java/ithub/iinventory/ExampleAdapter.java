@@ -78,6 +78,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
                 // String equipPrice = holder.mItemPrice.getText().toString();
                 String equipPrice = currentItem.getItemPrice();
                 sumValue -= Integer.parseInt(equipPrice);
+
+                ///update the sum value after reduce the value on remove button click
+                billObj.updateCounter(Integer.toString(sumValue));
                 //  billObj.setSum(sumValue);
                 //  innerView.setText("LKR"+ sumValue +"/=");
                //  holder.mTotal.setText("LKR"+ sumValue +"/=");
@@ -87,6 +90,10 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
                 // Remove the item on remove/button click
                 mExampleList.remove(position);
+
+                ///on each removal of recycler view element the sum has to be updated to the latest value...
+                billObj.setSum(sumValue);
+
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position,mExampleList.size());
 
