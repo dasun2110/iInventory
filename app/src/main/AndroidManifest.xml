@@ -11,33 +11,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".StartActivity" />
+        <activity android:name=".StartActivity"
+            android:screenOrientation="landscape"
+            />
         <activity
             android:name=".RegisterActivity"
+            android:screenOrientation="landscape"
 
             android:parentActivityName=".StartActivity" />
         <activity
             android:name=".LoginActivity"
+            android:screenOrientation="landscape"
             android:parentActivityName=".StartActivity" />
         <activity
             android:name=".AddItemActivity"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MakeBillActivity"
             android:launchMode="singleTask"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ChatActivity"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".All_ItemsActivity"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity" />
 
         <meta-data
@@ -46,14 +56,18 @@
 
         <activity
             android:name=".LastSaleActivity"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AllSalesActivity"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".CustomLayout"
+            android:screenOrientation="landscape"
             android:parentActivityName=".MakeBillActivity"/>
         <activity android:name=".PrinterService"
             android:launchMode="singleTask"
+            android:screenOrientation="landscape"
             android:parentActivityName=".CustomLayout"/>
     </application>
 
